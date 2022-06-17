@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .div {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 50%;
+            margin: auto;
+        }
+        img {
+            width: 300px;
+            height: 300px;
+        }
+    </style>
+</head>
+<body>
+    <div class="div">
+        <div>
+            <h1>
+                Nome:
+                <%= pessoas.name.first %>
+                <%= pessoas.name.last %>
+            </h1>
+            <%
+            var genero = '';
+            genero = pessoas.gender;
+                if(pessoas.gender == 'male') {
+                    pessoas.gender = 'masculino';
+                }else {
+                    pessoas.gender = 'feminino';
+                }
+
+            %>
+            <h3>Gênero: <%= pessoas.gender %></h3>
+            <h3>Idade: <% pessoas.registered.age += pessoas.registered.age*2 %> <%= pessoas.registered.age %></h3>
+        </div>
+        <img src="<%= pessoas.picture.large %>" alt="">
+    </div>
+    <form action="/pessoa" method="post">
+        <input type="hidden" name="gender" value="<%=genero%>">
+        <button>Não gostou? Procure mais</button>
+    </form>
+    <h4><a href="/">Voltar para o Menu Principal</a></h4>
+</body>
+</html>
